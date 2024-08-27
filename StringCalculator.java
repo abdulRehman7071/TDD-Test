@@ -7,7 +7,11 @@ public class StringCalculator {
             String[] numberArray = numbers.split(",");
             int sum = 0;
             for (String number : numberArray) {
-                sum += Integer.parseInt(number);
+                int num = Integer.parseInt(number);
+                if (num < 0) {
+                    throw new RuntimeException("Negative numbers not allowed: " + num);
+                }
+                sum += num;
             }
             return sum;
         }
@@ -15,7 +19,10 @@ public class StringCalculator {
 
     public static void main(String[] args) {
         StringCalculator calculator = new StringCalculator();
-        int result = calculator.add("1\n2,3");
-        System.out.println(result); // prints 6
+        try {
+            int result = calculator.add("-1,2");
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage()); // prints "Negative numbers not allowed: -1"
+        }
     }
 }
