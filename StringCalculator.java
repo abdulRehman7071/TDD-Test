@@ -9,7 +9,7 @@ public class StringCalculator {
 
     public static void main(String[] args) {
         StringCalculator calculator = new StringCalculator();
-        int result = calculator.add("");
-        System.out.println(result);
+        int result = calculator.add("1");
+        System.out.println(result); // prints 1
     }
 }
